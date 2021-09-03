@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="log-form">
+        <h2>Login to your account</h2>
+        <form id="form1" method="post">
+            <input type="text" title="username" name="username" placeholder="username" />
+            <input type="password" title="password" name="password" placeholder="password" />
+            <button type="submit" class="btn">Login</button>
+            <a href="register.html" class="register-btn"><button type="button" class="btn">Register</button></a>
+        </form>
+         <div id="demo"></div>
+    </div>
+      <script>
+        $(document).ready(function(){
+            $("#form1").submit(function(e){
+
+            e.preventDefault();
+            $.ajax({
+                url: 'login.php',
+                type: 'post',
+                data: $("#form1").serialize(),
+                success: function(response){
+                    $('#demo').html(response);
+
+                }
+            });
+
+    });
+
+        });
+    </script>
+
+</body>
+
+</html>

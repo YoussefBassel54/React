@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="log-form">
+        <h2>Checkout</h2>
+        <form method="post" id="form1">
+            <input type="text" name="name" title="name" placeholder="Name" />
+            <input type="text" name="address" title="address" placeholder="address" />
+            <input type="text" name="credit" title="credit" placeholder="Credit Card" />
+            <button type="submit" name="submit" class="btn">Checkout</button>
+            <a href="home.html" class="cancel-btn" ><button type="button" class="btn">Cancel</button></a>
+        </form>
+        <div id="demo"></div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#form1").submit(function(e){
+
+            e.preventDefault();
+            $.ajax({
+                url: 'checkout.php',
+                type: 'post',
+                data: $("#form1").serialize(),
+                success: function(response){
+                    $('#demo').html(response);
+
+                }
+            });
+
+    });
+
+        });
+    </script>
+</body>
+
+</html>
